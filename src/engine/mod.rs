@@ -43,7 +43,7 @@ impl Engine {
         }*/
 
         let details_future = details.iter().map(|daily_forecast| async {
-            let today = Utc::now().naive_local(); // BUG: inserts like utc so sometimes is tomorrows date
+            let today = Local::now().naive_local(); // BUG: inserts like utc so sometimes is tomorrows date
             let insert_date = match relative_date_into_real(today, &daily_forecast.day) {
                 Ok(day) => day,
                 Err(_) => today,
@@ -52,6 +52,7 @@ impl Engine {
                 day: Set(insert_date),
                 max_temp: Set(daily_forecast.max_temp),
                 min_temp: Set(daily_forecast.min_temp),
+                register_at: Set(Local::now().naive_local()),
                 ..Default::default()
             };
             println!("{:?}", daily_forecast);

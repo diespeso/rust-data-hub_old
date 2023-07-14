@@ -11,6 +11,7 @@ pub struct Model {
     pub day: NaiveDateTime,
     pub max_temp: i32,
     pub min_temp: i32,
+    pub register_at: NaiveDateTime,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
