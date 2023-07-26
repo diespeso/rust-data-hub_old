@@ -1,3 +1,5 @@
+pub mod generic_scraper_engine;
+
 use std::sync::Arc;
 
 use chrono::prelude::*;
